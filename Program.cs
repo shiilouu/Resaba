@@ -10,24 +10,38 @@
             Console.Write("Employee Name: ");
             string userName = Console.ReadLine();
 
-            Console.Write("Department: ");
-            string userDepartment = Console.ReadLine();
-
             Console.Write("Position: ");
             string userPosition = Console.ReadLine();
 
-            Console.Write("First Period | Second Period: ");
-            string userPeriod = Console.ReadLine();
+            Console.Write("Department: ");
+            string userDepartment = Console.ReadLine();
 
+            Console.Write("Total Hours: ");
+            int userTotalHours = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Regular Hours: ");
+            int userRegHours = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Overtime Hours: ");
+            int userOTHours = Convert.ToInt32(Console.ReadLine());
+
+            int sum = userTotalHours * 1000;
+
+            Console.WriteLine("Hello " + userName + ", from " + userPosition + " " + userDepartment + "!" + " Here's your Payslip, ");
             Console.WriteLine(" ");
-            Console.WriteLine("Hello " + userName + ", from " + userDepartment + " " + userPosition + "!" + " Here's your Payslip, ");
+            Console.WriteLine("========================PAYSLIP=========================");
             Console.WriteLine(" ");
-            Console.WriteLine("Total Hours Worked: ");
-            Console.WriteLine("Overtime Hours: ");
-            Console.WriteLine("Montly Salary Deductions: ");
-            Console.WriteLine("SSS (-4.5%)");
-            Console.WriteLine("Tax (-10%)");
-            Console.WriteLine("Total Salary: ");
+            Console.WriteLine("Total Hours Worked: " + userTotalHours );
+            Console.WriteLine("Overtime Hours: " + userOTHours);
+            Console.WriteLine("Gross: " + sum + " Pesos" );
+
+            Console.WriteLine("==================Montly Salary Deductions==============");
+            Console.WriteLine("SSS (-5%)");
+            Console.WriteLine("PhilHealth (-2.5%)" );
+            Console.WriteLine("PagIbig (-1%)");
+            Console.WriteLine("Withholding Tax");
+            Console.WriteLine("Total Deduction");
+            Console.WriteLine(" ");
         }
     }
 }
