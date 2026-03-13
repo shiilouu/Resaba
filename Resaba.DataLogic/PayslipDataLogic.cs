@@ -3,7 +3,7 @@ namespace Resaba.DataLogic
 {
     public class PayslipDataLogic
     {
-        public Employee GetEmployee(string name, string position, string department, int totalHours, int regHours, int otHours)
+        public Employee GetEmployee(string name, string position, string department, int totalHours, int regHours, int otHours, int payGrade, int leaves)
         {
             return new Employee
             {
@@ -12,7 +12,10 @@ namespace Resaba.DataLogic
                 Department = department,
                 TotalHours = totalHours,
                 RegularHours = regHours,
-                OvertimeHours = otHours };
+                OvertimeHours = otHours,
+                PayGrade = payGrade,
+                Leaves = leaves 
+                };
             }
         }
     }

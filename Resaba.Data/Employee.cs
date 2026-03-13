@@ -8,5 +8,7 @@ namespace Resaba.Data
         public int TotalHours {get; set;}
         public int RegularHours {get; set;}
         public int OvertimeHours {get; set;}
+        public int PayGrade {get; set;}
+        public int Leaves {get; set;}
     }
 }

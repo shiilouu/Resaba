@@ -6,11 +6,28 @@ namespace Resaba.Business
     public class PayslipBusiness
     {
         private PayslipDataLogic _dataLogic = new PayslipDataLogic();
-        public Employee GetEmployee(string name, string position, string department, int totalHours, int regHours, int otHours)
+        public Employee GetEmployee(string name, string position, string department, int totalHours, int regHours, int otHours, int payGrade, int leaves)
         {
-            return _dataLogic.GetEmployee(name, position, department, totalHours, regHours, otHours);
+            return _dataLogic.GetEmployee(name, position, department, totalHours, regHours, otHours, payGrade, leaves);
         }
-        public decimal ComputeGross(int totalHours) => totalHours * 1000;
+        public decimal GetHourlyRate(int payGrade)
+        {
+            switch(payGrade)
+            {
+                case 1: return 500;
+                case 2: return 750;
+                case 3: return 1000;
+                default: return 500;
+            }
+        }
+        public decimal ComputeGross(int regularHours, int otHours, int payGrade, int leaves)
+        {
+            decimal hourlyRate = GetHourlyRate(payGrade);
+            decimal regularPay = regularHours * hourlyRate;
+            decimal otPay = otHours * hourlyRate * 1.25m;
+            decimal leaveDeduction = leaves * hourlyRate * 8;
+            return regularPay + otPay - leaveDeduction;
+        }
         public decimal ComputeSSS(decimal gross) => gross * 0.05m;
         public decimal ComputePhilHealth(decimal gross) => gross * 0.025m;
         public decimal ComputePagIbig(decimal gross) => gross * 0.01m;
