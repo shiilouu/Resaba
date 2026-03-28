@@ -1,8 +1,16 @@
 using Resaba.Data;
+
 namespace Resaba.DataLogic
 {
     public class PayslipDataLogic
     {
+        IPayslipDataService _dataService;
+
+        public PayslipDataLogic(IPayslipDataService dataService)
+        {
+            _dataService = dataService;
+        }
+
         public Employee GetEmployee(string name, string position, string department, int regHours, int otHours, int payGrade, int leaves)
         {
             return new Employee
@@ -16,6 +24,16 @@ namespace Resaba.DataLogic
                 PayGrade = payGrade,
                 Leaves = leaves
             };
+        }
+
+        public void SaveEmployee(Employee employee)
+        {
+            _dataService.Add(employee);
+        }
+
+        public List<Employee> GetEmployees()
+        {
+            return _dataService.GetEmployees();
         }
     }
 }

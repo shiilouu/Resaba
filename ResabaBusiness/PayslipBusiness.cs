@@ -5,11 +5,26 @@ namespace Resaba.Business
 {
     public class PayslipBusiness
     {
-        private PayslipDataLogic _dataLogic = new PayslipDataLogic();
+        private PayslipDataLogic _dataLogic;
+
+        public PayslipBusiness(PayslipDataLogic dataLogic)
+        {
+            _dataLogic = dataLogic;
+        }
 
         public Employee GetEmployee(string name, string position, string department, int regHours, int otHours, int payGrade, int leaves)
         {
             return _dataLogic.GetEmployee(name, position, department, regHours, otHours, payGrade, leaves);
+        }
+
+        public void SaveEmployee(Employee employee)
+        {
+            _dataLogic.SaveEmployee(employee);
+        }
+
+        public List<Employee> GetEmployees()
+        {
+            return _dataLogic.GetEmployees();
         }
 
         public decimal GetHourlyRate(int payGrade)
