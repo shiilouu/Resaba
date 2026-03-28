@@ -24,8 +24,8 @@ namespace Playslip
 
                 string choice = Console.ReadLine();
 
-            if (choice == "1")
-            {
+                if (choice == "1")
+                {
             Console.WriteLine(" ");
             Console.WriteLine("=====================Employee Info===================== ");
             Console.WriteLine(" ");
@@ -43,38 +43,24 @@ namespace Playslip
             Console.WriteLine("====================Working Hours==================== ");
             Console.WriteLine(" ");
 
+            Console.Write("Total Hours: ");
+            int userTotalHours = Convert.ToInt32(Console.ReadLine());
+
             Console.Write("Regular Hours: ");
             int userRegHours = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Overtime Hours: ");
             int userOTHours = Convert.ToInt32(Console.ReadLine());
 
-            int userTotalHours = userRegHours + userOTHours;
-
-            Console.Write("Number of Unpaid Leaves: ");
-            int userLeaves = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine(" ");
-            Console.WriteLine("====================Pay Grade====================");
-            Console.WriteLine(" ");
-            Console.WriteLine("1 - Grade 1 (500 Pesos/hr)");
-            Console.WriteLine("2 - Grade 2 (750 Pesos/hr)");
-            Console.WriteLine("3 - Grade 3 (1000 Pesos/hr)");
-            Console.WriteLine(" ");
-            Console.Write("Choose Pay Grade (1-3): ");
+            Employee emplo = business.GetEmployee(userName, userPosition, userDepartment, userTotalHours, userRegHours, userOTHours);
             
-            int userPayGrade = Convert.ToInt32(Console.ReadLine());
-
-            Employee emplo = business.GetEmployee(userName, userPosition, userDepartment, userTotalHours, userRegHours, userOTHours, userPayGrade, userLeaves);
-            
-            decimal gross = business.ComputeGross(emplo.RegularHours, emplo.OvertimeHours, emplo.PayGrade, emplo.Leaves);
+            decimal gross = business.ComputeGross(emplo.TotalHours);
             decimal sss = business.ComputeSSS(gross);
             decimal philhealth = business.ComputePhilHealth(gross);
             decimal pagibig = business.ComputePagIbig(gross);
             decimal withholdingTax = business.ComputeWithholdingTax(gross);
             decimal totalDeduction = business.ComputeTotalDeduction(gross);
             decimal netPay = business.ComputeNetPay(gross);
-            decimal hourlyRate = business.GetHourlyRate(emplo.PayGrade);            
             
             //int sum = userTotalHours * 1000;
             Console.WriteLine(" ");
