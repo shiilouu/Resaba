@@ -94,5 +94,7 @@ namespace Playslip
             Console.WriteLine("Invalid Menu Option. Please press any key...");
             Console.ReadKey();
         }
-    }while (running);
-}}}
+} while (running);
+        }
+    }
+}

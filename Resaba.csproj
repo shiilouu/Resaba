@@ -8,13 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Resaba.Data\**" />
-    <Compile Remove="Resaba.DataLogic\**" />
-    <Compile Remove="Resaba.Business\**" />
+    <Compile Remove="ResabaData\**" />
+    <Compile Remove="ResabaDataLogic\**" />
+    <Compile Remove="ResabaBusiness\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="Resaba.Business/Resaba.Business.csproj" />
+    <ProjectReference Include="ResabaBusiness/Resaba.Business.csproj" />
   </ItemGroup>
 
 </Project>
