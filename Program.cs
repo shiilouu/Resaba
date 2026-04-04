@@ -36,19 +36,86 @@ namespace Playslip
                     Console.Write("Employee Name: ");
                     string userName = Console.ReadLine();
 
-                    Console.Write("Position: ");
-                    string userPosition = Console.ReadLine();
+                    Console.WriteLine(" ");
+                    Console.WriteLine("====================Position====================");
+                    Console.WriteLine("1 - Junior");
+                    Console.WriteLine("2 - Senior");
+                    Console.WriteLine("3 - Manager");
+                    Console.Write("Choose Position (1-3): ");
+                    int positionChoice = Convert.ToInt32(Console.ReadLine());
 
-                    Console.Write("Department: ");
-                    string userDepartment = Console.ReadLine();
+                    string userPosition;
+                    int userPayGrade;
+
+                    switch (positionChoice)
+                    {
+                        case 1:
+                            userPosition = "Junior";
+                            userPayGrade = 1;
+                            break;
+                        case 2:
+                            userPosition = "Senior";
+                            userPayGrade = 2;
+                            break;
+                        case 3:
+                            userPosition = "Manager";
+                            userPayGrade = 3;
+                            break;
+                        default:
+                            userPosition = "Junior";
+                            userPayGrade = 1;
+                            break;
+                    }
 
                     Console.WriteLine(" ");
-                    Console.WriteLine("====================Working Hours==================== ");
+                    Console.WriteLine("====================Department====================");
+                    Console.WriteLine("1 - IT (160 hrs)");
+                    Console.WriteLine("2 - HR (160 hrs)");
+                    Console.WriteLine("3 - Finance (176 hrs)");
+                    Console.WriteLine("4 - Marketing (168 hrs)");
+                    Console.WriteLine("5 - Operations (176 hrs)");
+                    Console.WriteLine("6 - Admin (160 hrs)");
+                    Console.Write("Choose Department (1-6): ");
+                    int deptChoice = Convert.ToInt32(Console.ReadLine());
+
+                    string userDepartment;
+                    int userRegHours;
+
+                    switch (deptChoice)
+                    {
+                        case 1:
+                            userDepartment = "IT";
+                            userRegHours = 160;
+                            break;
+                        case 2:
+                            userDepartment = "HR";
+                            userRegHours = 160;
+                            break;
+                        case 3:
+                            userDepartment = "Finance";
+                            userRegHours = 176;
+                            break;
+                        case 4: 
+                            userDepartment = "Marketing";
+                            userRegHours = 168;
+                            break;
+                        case 5: 
+                            userDepartment = "Operations";
+                            userRegHours = 176;
+                            break;
+                        case 6: 
+                            userDepartment = "Admin";
+                            userRegHours = 160;
+                            break;
+                        default: 
+                            userDepartment = "IT";
+                            userRegHours = 160;
+                            break;
+                    }
+
                     Console.WriteLine(" ");
-
-                    Console.Write("Regular Hours: ");
-                    int userRegHours = Convert.ToInt32(Console.ReadLine());
-
+                    Console.WriteLine("====================Working Hours====================");
+                    Console.WriteLine(" ");
                     Console.Write("Overtime Hours: ");
                     int userOTHours = Convert.ToInt32(Console.ReadLine());
 
@@ -56,16 +123,6 @@ namespace Playslip
 
                     Console.Write("Number of Unpaid Leaves: ");
                     int userLeaves = Convert.ToInt32(Console.ReadLine());
-
-                    Console.WriteLine(" ");
-                    Console.WriteLine("====================Pay Grade====================");
-                    Console.WriteLine(" ");
-                    Console.WriteLine("1 - Grade 1 (500 Pesos/hr)");
-                    Console.WriteLine("2 - Grade 2 (750 Pesos/hr)");
-                    Console.WriteLine("3 - Grade 3 (1000 Pesos/hr)");
-                    Console.WriteLine(" ");
-                    Console.Write("Choose Pay Grade (1-3): ");
-                    int userPayGrade = Convert.ToInt32(Console.ReadLine());
 
                     Employee emplo = business.GetEmployee(userName, userPosition, userDepartment, userRegHours, userOTHours, userPayGrade, userLeaves);
 
@@ -107,17 +164,94 @@ namespace Playslip
                     Console.WriteLine("PagIbig (-1%): " + pagibig + " Pesos");
                     Console.WriteLine("Withholding Tax: " + withholdingTax + " Pesos");
                     Console.WriteLine("Total Deduction: " + totalDeduction + " Pesos");
+                    Console.WriteLine(" ");
                     Console.WriteLine("Net Pay: " + netPay + " Pesos");
                     Console.WriteLine(" ");
                     Console.WriteLine("Record saved!");
                     Console.WriteLine("===========Press Any Key To Return to Menu===========");
                     Console.ReadKey();
                 }
+
                 else if (choice == "2")
                 {
                     Console.Clear();
+                    Console.WriteLine("====================Search Records====================");
+                    Console.WriteLine(" ");
+
+                    Console.Write("Enter Name: ");
+                    string searchName = Console.ReadLine();
+
+                    Console.WriteLine(" ");
+                    Console.WriteLine("====================Position====================");
+                    Console.WriteLine("1 - Junior");
+                    Console.WriteLine("2 - Senior");
+                    Console.WriteLine("3 - Manager");
+                    Console.Write("Choose Position (1-3): ");
+                    int searchPositionChoice = Convert.ToInt32(Console.ReadLine());
+
+                    string searchPosition;
+                    switch (searchPositionChoice)
+                    {
+                        case 1:
+                            searchPosition = "Junior";
+                            break;
+                        case 2:
+                            searchPosition = "Senior";
+                            break;
+                        case 3:
+                            searchPosition = "Manager";
+                            break;
+                        default:
+                            searchPosition = "Junior";
+                            break;
+                    }
+
+                    Console.WriteLine(" ");
+                    Console.WriteLine("====================Department====================");
+                    Console.WriteLine("1 - IT");
+                    Console.WriteLine("2 - HR");
+                    Console.WriteLine("3 - Finance");
+                    Console.WriteLine("4 - Marketing");
+                    Console.WriteLine("5 - Operations");
+                    Console.WriteLine("6 - Admin");
+                    Console.Write("Choose Department (1-6): ");
+                    int searchDeptChoice = Convert.ToInt32(Console.ReadLine());
+
+                    string searchDepartment;
+                    switch (searchDeptChoice)
+                    {
+                        case 1:
+                            searchDepartment = "IT";
+                            break;
+                        case 2:
+                            searchDepartment = "HR";
+                            break;
+                        case 3:
+                            searchDepartment = "Finance";
+                            break;
+                        case 4:
+                            searchDepartment = "Marketing";
+                            break;
+                        case 5:
+                            searchDepartment = "Operations";
+                            break;
+                        case 6:
+                            searchDepartment = "Admin";
+                            break;
+                        default:
+                            searchDepartment = "IT";
+                            break;
+                    }
+
+                    var records = business.GetEmployees()
+                        .Where(e => e.Name.ToLower().Contains(searchName.ToLower())
+                            && e.Position == searchPosition
+                            && e.Department == searchDepartment)
+                        .ToList();
+
+                    Console.Clear();
                     Console.WriteLine("=======================RECORDS========================");
-                    var records = business.GetEmployees();
+
                     if (records.Count == 0)
                     {
                         Console.WriteLine("No records found.");
