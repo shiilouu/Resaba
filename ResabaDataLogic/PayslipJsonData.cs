@@ -59,5 +59,28 @@ namespace Resaba.DataLogic
             RetrieveDataFromJsonFile();
             return employees;
         }
+
+        public void Update(Employee employee)
+        {
+            RetrieveDataFromJsonFile();
+            var existing = employees.FirstOrDefault(e => e.Name == employee.Name);
+            if (existing != null)
+            {
+                employees.Remove(existing);
+                employees.Add(employee);
+                SaveDataToJsonFile();
+            }
+        }
+
+        public void Delete(string name)
+        {
+            RetrieveDataFromJsonFile();
+            var existing = employees.FirstOrDefault(e => e.Name == name);
+            if (existing != null)
+            {
+                employees.Remove(existing);
+                SaveDataToJsonFile();
+            }
+        }
     }
 }

@@ -80,5 +80,58 @@ namespace Resaba.DataLogic
             sqlConnection.Close();
             return employees;
         }
+
+        public void Update(Employee employee)
+        {
+            var updateStatement = @"UPDATE Employees SET 
+                Position = @Position, 
+                Department = @Department,
+                TotalHours = @TotalHours,
+                RegularHours = @RegularHours,
+                OvertimeHours = @OvertimeHours,
+                PayGrade = @PayGrade,
+                Leaves = @Leaves,
+                Gross = @Gross,
+                SSS = @SSS,
+                PhilHealth = @PhilHealth,
+                PagIbig = @PagIbig,
+                WithholdingTax = @WithholdingTax,
+                TotalDeduction = @TotalDeduction,
+                NetPay = @NetPay
+                WHERE Name = @Name";
+
+            SqlCommand updateCommand = new SqlCommand(updateStatement, sqlConnection);
+            updateCommand.Parameters.AddWithValue("@Name", employee.Name);
+            updateCommand.Parameters.AddWithValue("@Position", employee.Position);
+            updateCommand.Parameters.AddWithValue("@Department", employee.Department);
+            updateCommand.Parameters.AddWithValue("@TotalHours", employee.TotalHours);
+            updateCommand.Parameters.AddWithValue("@RegularHours", employee.RegularHours);
+            updateCommand.Parameters.AddWithValue("@OvertimeHours", employee.OvertimeHours);
+            updateCommand.Parameters.AddWithValue("@PayGrade", employee.PayGrade);
+            updateCommand.Parameters.AddWithValue("@Leaves", employee.Leaves);
+            updateCommand.Parameters.AddWithValue("@Gross", employee.Gross);
+            updateCommand.Parameters.AddWithValue("@SSS", employee.SSS);
+            updateCommand.Parameters.AddWithValue("@PhilHealth", employee.PhilHealth);
+            updateCommand.Parameters.AddWithValue("@PagIbig", employee.PagIbig);
+            updateCommand.Parameters.AddWithValue("@WithholdingTax", employee.WithholdingTax);
+            updateCommand.Parameters.AddWithValue("@TotalDeduction", employee.TotalDeduction);
+            updateCommand.Parameters.AddWithValue("@NetPay", employee.NetPay);
+
+            sqlConnection.Open();
+            updateCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
+        public void Delete(string name)
+        {
+            var deleteStatement = "DELETE FROM Employees WHERE Name = @Name";
+
+            SqlCommand deleteCommand = new SqlCommand(deleteStatement, sqlConnection);
+            deleteCommand.Parameters.AddWithValue("@Name", name);
+
+            sqlConnection.Open();
+            deleteCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
     }
 }

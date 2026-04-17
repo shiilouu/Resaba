@@ -35,5 +35,15 @@ namespace Resaba.DataLogic
         {
             return _dataService.GetEmployees();
         }
+
+        public void UpdateEmployee(Employee employee)
+        {
+            _dataService.Update(employee);
+        }
+
+        public void DeleteEmployee(string name)
+        {
+            _dataService.Delete(name);
+        }
     }
 }

@@ -6,5 +6,7 @@ namespace Resaba.DataLogic
     {
         void Add(Employee employee);
         List<Employee> GetEmployees();
+        void Update(Employee employee);
+        void Delete(string name);
     }
 }

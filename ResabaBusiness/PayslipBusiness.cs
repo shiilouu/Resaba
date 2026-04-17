@@ -27,6 +27,16 @@ namespace Resaba.Business
             return _dataLogic.GetEmployees();
         }
 
+        public void UpdateEmployee(Employee employee)
+        {
+            _dataLogic.UpdateEmployee(employee);
+        }
+
+        public void DeleteEmployee(string name)
+        {
+            _dataLogic.DeleteEmployee(name);
+        }
+
         public decimal GetHourlyRate(int payGrade)
         {
             if (payGrade == 1) return 500;
