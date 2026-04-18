@@ -18,9 +18,12 @@ namespace Resaba.DataLogic
         public void Add(Employee employee)
         {
             var insertStatement = @"INSERT INTO Employees 
-                VALUES (@Name, @Position, @Department, @TotalHours, @RegularHours, 
-                @OvertimeHours, @PayGrade, @Leaves, @Gross, @SSS, @PhilHealth, 
-                @PagIbig, @WithholdingTax, @TotalDeduction, @NetPay)";
+            (Name, Position, Department, TotalHours, RegularHours, 
+            OvertimeHours, PayGrade, Leaves, Gross, SSS, PhilHealth, 
+            PagIbig, WithholdingTax, TotalDeduction, NetPay) 
+            VALUES (@Name, @Position, @Department, @TotalHours, @RegularHours, 
+            @OvertimeHours, @PayGrade, @Leaves, @Gross, @SSS, @PhilHealth, 
+            @PagIbig, @WithholdingTax, @TotalDeduction, @NetPay)";
 
             SqlCommand insertCommand = new SqlCommand(insertStatement, sqlConnection);
             insertCommand.Parameters.AddWithValue("@Name", employee.Name);
